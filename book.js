@@ -1,27 +1,44 @@
-class book {
+class Backpack {
     constructor(
-        title,
-        author,
-        year,
-        rating,       
-    )
-    {
-        this.title=title,
-        this.author=author,
-        this.year=year,
-        this.rating=rating
+      id,
+      name,
+      volume,
+      color,
+      pocketNum,
+      strapLengthL,
+      strapLengthR,
+      lidOpen,
+      dateAcquired,
+      image
+    ) {
+      this.id = id;
+      this.name = name;
+      this.volume = volume;
+      this.color = color;
+      this.pocketNum = pocketNum;
+      this.strapLength = {
+        left: strapLengthL,
+        right: strapLengthR,
+      };
+      this.lidOpen = lidOpen;
+      this.dateAcquired = dateAcquired;
+      this.image = image;
     }
-    recommend(){
-        if (this.rating>3){
-            return true;
-        }
-        else
-        return false;
+    toggleLid(lidStatus) {
+      this.lidOpen = lidStatus;
     }
-    changeRating(r){
-        this.rating=r;
+    newStrapLength(lengthLeft, lengthRight) {
+      this.strapLength.left = lengthLeft;
+      this.strapLength.right = lengthRight;
     }
-
-}
-
-export default book;
+    backpackAge() {
+      let now = new Date();
+      let acquired = new Date(this.dateAcquired);
+      let elapsed = now - acquired; // elapsed time in milliseconds
+      let daysSinceAcquired = Math.floor(elapsed / (1000 * 3600 * 24));
+      return daysSinceAcquired;
+    }
+  }
+  
+  // Export the Backpack class to be used by other files
+  export default Backpack;
