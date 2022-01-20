@@ -1,5 +1,21 @@
 import backpackObjectArray from "./data.js";
 
+const lidToggle = function (){
+  let backpackOject = backpackObjectArray.find(({id})=>id === this.parentElement.id);
+  backpackOject.lidOpen == true
+  ? backpackOject.lidOpen = false
+  : backpackOject.lidOpen = true;
+
+  this.innerText == "Open Lid"
+  ? this.innText = "Close Lid"
+  : this.innerText = "Open Lid";
+
+  let status = this.parentElement.querySelector(".backpack__lid span");
+  status.innerText = "closed"
+  ?(status.innerText="open")
+  :(status.innerText="closed");
+}
+
 const backpackList = backpackObjectArray.map((backpack)=>{
     let article = document.createElement("article");
     article.classList.add("backpack");
@@ -36,7 +52,7 @@ const backpackList = backpackObjectArray.map((backpack)=>{
   button.addEventListener("click", (event) => {
     console.log(event)
     status.innerText === "open" ? status.innerText = "closed" : status.innerText = "open"
-    button.innerText === "Close Lid" ? button.innerText = "Open Lid" : button.innerHTML="Close Lid"
+    //button.innerText === "Close Lid" ? button.innerText = "Open Lid" : button.innerHTML="Close Lid"
   })
   return article;
 });
@@ -45,3 +61,4 @@ const main = document.querySelector(".maincontent");
 backpackList.forEach((backpack) => {
   main.append(backpack);
 });
+
