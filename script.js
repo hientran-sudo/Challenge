@@ -1,6 +1,7 @@
 import backpackObjectArray from "./data.js";
 
-const lidToggle = function (){
+const lidToggle = function (event){
+  console.log(event)// shows in the console anytime the function is toggled
   let backpackOject = backpackObjectArray.find(({id})=>id === this.parentElement.id);
   backpackOject.lidOpen == true
   ? backpackOject.lidOpen = false
