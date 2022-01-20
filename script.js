@@ -5,7 +5,7 @@ const backpackList = backpackObjectArray.map((backpack)=>{
     article.classList.add("backpack");
     article.setAttribute("id",backpack.id);
     article.innerHTML=`<figure class="backpack__image">
-    <img src=${backpack.image} alt="" />
+    <img src=${backpack.image} alt="" width = "500" height = "600"/>
   </figure>
   <h1 class="backpack__name">${backpack.name}</h1>
   <ul class="backpack__features">
@@ -36,6 +36,7 @@ const backpackList = backpackObjectArray.map((backpack)=>{
   button.addEventListener("click", (event) => {
     console.log(event)
     status.innerText === "open" ? status.innerText = "closed" : status.innerText = "open"
+    button.innerText === "Close Lid" ? button.innerText = "Open Lid" : button.innerHTML="Close Lid"
   })
   return article;
 });
@@ -44,4 +45,3 @@ const main = document.querySelector(".maincontent");
 backpackList.forEach((backpack) => {
   main.append(backpack);
 });
-
